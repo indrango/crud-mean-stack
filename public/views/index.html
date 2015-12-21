@@ -27,6 +27,7 @@
               <th class="text-center">NPM</th>
               <th class="text-center">NAMA</th>
               <th class="text-center">KELAS</th>
+              <th class="text-center">AKSI</th>
             </tr>
           </thead>
           <tbody>
@@ -34,6 +35,10 @@
               <td>{{ user.npm}}</td>
               <td>{{ user.nama }}</td>
               <td>{{ user.kelas }}</td>
+              <td>
+                <button class="btn btn-danger" ng-click="remove(user._id)">Delete</button>
+                <button class="btn btn-warning" ng-click="edit(user._id)">Edit</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -51,6 +56,7 @@
             <input ng-model="user.kelas" class="form-control" placeholder="Kelas">
           </div>
           <button type="submit" class="btn btn-default btn-lg" ng-click="createUser()">Add</button>
+            <button type="submit" class="btn btn-default btn-lg" ng-click="update()">Update</button>
         </form>
       </div>
 

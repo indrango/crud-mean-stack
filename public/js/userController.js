@@ -2,25 +2,38 @@ var app = angular.module('crudApp', []);
 
 app.controller('mainController', ['$scope', '$http', function($scope, $http){
   $scope.message = "Hellow!";
-
   var refresh = function() {
-    $http.get('/api/users').success(function(res) {
-      $scope.userList = res;
+    $http.get('/api/users').success(function(data) {
+      $scope.userList = data;
+      $scope.user = "";
     });
   };
 
   refresh();
 
   $scope.createUser = function() {
-    User.create({
-      npm : $scope.user.npm,
-      nama : $scope.user.nama,
-      kelas : $scope.user.kelas
-    })
-      .then(function(data) {
-        console.log('Create angluar data.');
-        refresh();
-      });
+    $http.post('/api/users', $scope.user).success(function(data) {
+      console.log(data);
+      refresh();
+    });
+  };
+
+  $scope.remove = function(id) {
+    $http.delete('/api/users/' + id).success(function(data){
+      refresh();
+    });
+  };
+
+  $scope.edit = function(id) {
+    $http.put('/api/users/' + id).success(function(data) {
+      $scope.user = data;
+    });
+  };
+
+  $scope.update = function(id) {
+    $http.put('/api/users/' + $scope.user._id, $scope.user).success(function(data) {
+      refresh();
+    });
   };
 
 }]);
