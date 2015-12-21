@@ -1,0 +1,16 @@
+{
+  "name": "crud-mean-stack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "jsonwebtoken": "^5.4.1",
+    "method-override": "^2.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Indra Nugraha",
+  "license": "MIT"
+}
