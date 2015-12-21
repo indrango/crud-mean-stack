@@ -1,9 +1,59 @@
 <!doctype html>
-<html>
+<html ng-app="crudApp">
   <head>
+    <meta charset="utf-8">
     <title>CRUD Mean Stack</title>
+    <!-- SET UP TOOLS-->
+    <script src="angular/angular.min.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <!-- IMPORT JS -->
+    <script type="text/javascript" src="js/userController.js"></script>
+    <!--<script type="text/javascript" src="js/userServices.js"></script>-->
+    <base href="/">
   </head>
-  <body>
-    <h1>Hellow!</h1>
+  <body class="container" ng-controller="mainController">
+    <div class="jumbotron text-center">
+      <h1>Home Page</h1>
+      <p>
+        {{ message }}
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">NPM</th>
+              <th class="text-center">NAMA</th>
+              <th class="text-center">KELAS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat = "user in userList">
+              <td>{{ user.npm}}</td>
+              <td>{{ user.nama }}</td>
+              <td>{{ user.kelas }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-4">
+        <form class="form-group">
+          <div class="form-group">
+            <input ng-model="user.npm" class="form-control" placeholder="NPM">
+          </div>
+          <div class="form-group">
+            <input ng-model="user.nama" class="form-control" placeholder="Nama">
+          </div>
+          <div class="form-group">
+            <input ng-model="user.kelas" class="form-control" placeholder="Kelas">
+          </div>
+          <button type="submit" class="btn btn-default btn-lg" ng-click="createUser()">Add</button>
+        </form>
+      </div>
+
+    </div>
   </body>
 </html>

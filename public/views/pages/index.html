@@ -1,0 +1,29 @@
+<div class="jumbotron text-center">
+  <h1>Home Page</h1>
+  <p>
+    {{ message }}
+  </p>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th class="text-center">NPM</th>
+          <th class="text-center">NAMA</th>
+          <th class="text-center">KELAS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat = "user in userList">
+          <td>{{ user.npm }}</td>
+          <td>{{ user.nama }}</td>
+          <td>{{ user.kelas }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+  </div>
+</div>

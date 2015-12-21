@@ -1,4 +1,4 @@
 module.exports = {
-  'port' : '8080',
-  'database' : 'mongodb://localhost/crud-mean-stack'
+  'database' : 'mongodb://localhost/crud-mean-stack',
+  'port' : '8000'
 };

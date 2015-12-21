@@ -2,11 +2,6 @@ var User = require('../models/user');
 
 module.exports = function(app) {
 
-  //home page
-  app.get('/', function(req, res) {
-    res.sendFile('./public/views/index.html');
-  })
-
   //data from '/api/users'
   app.route('/api/users')
     //get data

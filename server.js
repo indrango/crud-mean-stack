@@ -19,9 +19,9 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //set up view
-/*app.get('*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
-})*/
+})
 
 //set up database
 mongoose.connect(config.database, function(err) {
@@ -34,5 +34,5 @@ mongoose.connect(config.database, function(err) {
 //routes
 require('./app/routes/routes')(app);
 
-app.listen(8080);
-console.log('crud-mean-stack running at http://localhost:'+ config.port);
+app.listen(config.port);
+console.log('crud-mean-stack running at http://localhost:' + config.port);
