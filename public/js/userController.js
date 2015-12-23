@@ -1,18 +1,18 @@
-var app = angular.module('crudApp', []);
+var app = angular.module('crudApp', ['crudServices']);
 
-app.controller('mainController', ['$scope', '$http', function($scope, $http){
+app.controller('mainController', ['$scope', '$http', 'Users', function($scope, $http, Users){
   $scope.message = "Hellow!";
+
   var refresh = function() {
-    $http.get('/api/users').success(function(data) {
+    Users.all().success(function(data) {
       $scope.userList = data;
       $scope.user = "";
     });
   };
-
   refresh();
 
   $scope.createUser = function() {
-    $http.post('/api/users', $scope.user).success(function(data) {
+    Users.create($scope.user).success(function(data) {
       console.log(data);
       refresh();
     });
@@ -25,13 +25,13 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http){
   };
 
   $scope.edit = function(id) {
-    $http.put('/api/users/' + id).success(function(data) {
+    Users.get(id).success(function(data) {
       $scope.user = data;
     });
   };
 
   $scope.update = function(id) {
-    $http.put('/api/users/' + $scope.user._id, $scope.user).success(function(data) {
+    Users.update($scope.user._id, $scope.user).success(function(data) {
       refresh();
     });
   };
